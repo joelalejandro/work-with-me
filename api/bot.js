@@ -13,7 +13,7 @@ export default async (req, res) => {
         const { chat: { id }, text } = incoming.message;
         const [commandName, commandData] = text.split(' ', 1);
         if (commandDirectory[commandName]) {
-            const commandFunction = require(path.resolve(__dirname, `../commands${commandDirectory[commandName]}`)).default;
+            const commandFunction = require(path.resolve(__dirname, `../commands/${commandDirectory[commandName]}`)).default;
             const commandResponse = await commandFunction({ rawMessage: incoming.message, commandName, commandData });
             await bot.sendMessage(id, commandResponse, { parse_mode: 'Markdown' });
         } else {
