@@ -7,7 +7,7 @@ const { TELEGRAM_TOKEN } = process.env;
 
 export default async (req, res) => {
     const bot = new TelegramBot({ token: TELEGRAM_TOKEN });
-    const incoming = JSON.parse(req.body);
+    const incoming = req.body;
 
     if (incoming.message) {
         const { chat: { id }, text } = incoming.message;
