@@ -1,0 +1,5 @@
+{
+    "/hello": "hello.js",
+    "/toggl_login": "toggl/login.js",
+    "/toggl_track": "toggl/track.js"
+}
