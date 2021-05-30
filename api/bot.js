@@ -14,8 +14,8 @@ export default async (req, res) => {
         const [commandName, commandData] = text.split(' ', 1);
         if (commandDirectory[commandName]) {
             const commandFunction = require(path.resolve(__dirname, `../commands/${commandDirectory[commandName]}`)).default;
-            const commandResponse = await commandFunction({ rawMessage: incoming.message, commandName, commandData });
-            await bot.sendMessage(id, commandResponse, { parse_mode: 'Markdown' });
+            const commandResponse = await commandFunction({ bot, rawMessage: incoming.message, commandName, commandData });
+            await bot.sendMessage({ chat_id: id, text: commandResponse, parse_mode: 'Markdown' });
         } else {
             await bot.sendMessage(id, '🛑 Error: Unknown command');
         }
