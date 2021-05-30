@@ -19,9 +19,9 @@ const login = async (token) => {
         return {
             name: profile.fullname,
         };
-    } catch {
+    } catch (e) {
         return {
-            error: 'login_failed'
+            error: e.message
         };
     }
 };

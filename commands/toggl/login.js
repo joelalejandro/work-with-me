@@ -8,7 +8,7 @@ export default async ({ rawMessage, commandData }) => {
     
     const result = await login(commandData);
     if (result.error) {
-        return 'Invalid token';
+        return 'Invalid token ```' + result.error + '```';
     } else {
         tokens[chatId] = commandData;
         return `Toggl says hi, **${result.name}**!`;
