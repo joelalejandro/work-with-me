@@ -6,7 +6,7 @@ import TelegramBot from 'telegram-bot-api';
 const { TELEGRAM_TOKEN } = process.env;
 
 export default async (req, res) => {
-    const bot = new TelegramBot(TELEGRAM_TOKEN);
+    const bot = new TelegramBot({ token: TELEGRAM_TOKEN });
     const incoming = JSON.parse(req.body);
 
     if (incoming.message) {
