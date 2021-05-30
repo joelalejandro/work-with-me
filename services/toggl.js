@@ -4,7 +4,8 @@ import { asJSON } from '../utils/fetch';
 const API_URL = "https://api.track.toggl.com/api/v8";
 
 const getAuthHeader = (token) => {
-    const auth = new Buffer(`${token}:api_token`).toString('base64');
+    const auth = Buffer.from(`${token}:api_token`).toString('base64');
+    console.log('Encoding ', token, ' as ', auth);
     return { authorization: `Basic ${auth}` };
 }
 
