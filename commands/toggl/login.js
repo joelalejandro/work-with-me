@@ -1,16 +1,12 @@
-import fetch from 'node-fetch';
-import { login } from '../../services/toggl';
+import { login, saveToken } from '../../services/toggl';
 
-const tokens = {};
-
-export default async ({ rawMessage, commandData }) => {
-    const chatId = rawMessage.chat.id;
-    
+export default async ({ chatId, commandData }) => {
     const result = await login(commandData);
+
     if (result.error) {
         return 'Invalid token ```' + result.error + '```';
     } else {
-        tokens[chatId] = commandData;
-        return `Toggl says hi, **${result.name}**!`;
+        saveToken(chatId, commandData);
+        return `Toggl says hi, *${result.name}*!`;
     }
 }
