@@ -18,7 +18,7 @@ const login = async (token) => {
             }
         }).then(asJSON);
         return {
-            name: profile.fullname,
+            name: profile.data.fullname,
         };
     } catch (e) {
         return {
